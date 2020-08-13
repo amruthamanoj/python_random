@@ -1,0 +1,14 @@
+#read news selectively.
+
+import newspaper
+npaper = newspaper.build('https://indianexpress.com/')
+
+for article in npaper.articles:
+    
+    article.download()
+    article.parse()
+    article.nlp()
+    p = article.keywords
+    for i in range(0,len(p)):
+        if article.keywords[i] == 'india' or article.keywords[i] == 'indian':
+            print(article.summary)
